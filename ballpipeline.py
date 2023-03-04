@@ -1,9 +1,13 @@
 import numpy as np
 import cv2 as cv
+import cvzone
+from cvzone.ColorModule import ColorFinder
 
 videoCapture = cv.VideoCapture(0)
 prevCircle = None
 def dist(x1, y1, x2, y2): return (x1-x2)**2+(y1-y2)**2
+
+ballColorFinder = ColorFinder(True)
 
 
 # This while loop sets up the camera to be used
