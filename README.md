@@ -1,2 +1,2 @@
-# Our 2023 Beginner HackTJ 10.0 App
+# Our 2023 HackTJ Sports Ball Detection
 By Aneesh Peri, Pratham Vaddi, Ritwik Sinha, and Salban Nithilaselvan
