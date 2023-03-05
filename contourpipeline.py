@@ -36,9 +36,10 @@ while True:
         cv.circle(circles, (x + w//2, y + h//2), w//2, (0,255,0), -1)
 
 
-    imageStack = cvzone.stackImages([frame, circles, imageColor, black] , 4, 0.4)
 
-    cv.imshow("frame", imageStack)
+    
+
+    cv.imshow("frame", frame)
 
     if cv.waitKey(1) & 0xFF == ord('q'):
         break
