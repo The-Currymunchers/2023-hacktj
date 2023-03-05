@@ -35,10 +35,6 @@ while True:
 
     imageStack = cvzone.stackImages([frame, blurFrame, black], 3, 0.6)
 
-
-
-    
-
     cv.imshow("frame", frame)
 
     if cv.waitKey(1) & 0xFF == ord('q'):
