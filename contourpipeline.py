@@ -7,7 +7,7 @@ videoCapture = cv.VideoCapture(0)
 prevCircle = None
 def dist(x1, y1, x2, y2): return (x1-x2)**2+(y1-y2)**2
 
-hsvVals = {'hmin': 2, 'smin': 96, 'vmin': 86, 'hmax': 20, 'smax': 199, 'vmax': 255}
+hsvVals = {'hmin': 0, 'smin': 75, 'vmin': 85, 'hmax': 80, 'smax': 190, 'vmax': 255}
 
 ballColorFinder = ColorFinder(False)
 
@@ -17,6 +17,7 @@ while True:
         break
 
     black = np.zeros((frame.shape[0], frame.shape[1], 3), dtype=np.uint8)
+    circles = np.zeros((frame.shape[0], frame.shape[1], 3), dtype=np.uint8)
 
     imageColor, mask = ballColorFinder.update(frame, hsvVals)
 
@@ -32,10 +33,12 @@ while True:
         
         # Draw a green circle around the volleyball
         cv.circle(frame, (x + w//2, y + h//2), w//2, (0,255,0), -1)
+        cv.circle(circles, (x + w//2, y + h//2), w//2, (0,255,0), -1)
 
-    imageStack = cvzone.stackImages([frame, blurFrame, black], 3, 0.6)
 
-    cv.imshow("frame", frame)
+    imageStack = cvzone.stackImages([frame, circles, imageColor, black] , 4, 0.4)
+
+    cv.imshow("frame", imageStack)
 
     if cv.waitKey(1) & 0xFF == ord('q'):
         break
